@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 // 2 & 3: Use PostgreSQL with process.env.DATABASE_URL & Enable SSL for Neon
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_POSTGRES_URL_NON_POOLING || process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
 

@@ -38,6 +38,7 @@ app.post('/api/signup', async (req, res) => {
                 }
                 return res.status(500).json({ error: err.message });
             }
+            // this.lastID contains the id of the newly inserted row
             const token = jwt.sign({ id: this.lastID, email }, JWT_SECRET, { expiresIn: '24h' });
             res.json({ token, user: { id: this.lastID, email } });
         });

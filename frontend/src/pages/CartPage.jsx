@@ -8,7 +8,7 @@ export default function CartPage({ updateCartCount, token }) {
     const [checkingOut, setCheckingOut] = useState(false);
 
     const fetchCartItems = () => {
-        fetch('http://localhost:5000/api/cart', {
+        fetch('/api/cart', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -30,7 +30,7 @@ export default function CartPage({ updateCartCount, token }) {
 
     const handleRemove = async (cartId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/cart/${cartId}`, {
+            const response = await fetch(`/api/cart/${cartId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -49,7 +49,7 @@ export default function CartPage({ updateCartCount, token }) {
             // Simulate network delay for effect
             await new Promise(r => setTimeout(r, 1500));
 
-            const response = await fetch('http://localhost:5000/api/checkout', {
+            const response = await fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

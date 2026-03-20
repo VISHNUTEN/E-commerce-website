@@ -32,7 +32,7 @@ function App() {
   // Fetch initial cart count
   const fetchCartCount = () => {
     if (!token) return;
-    fetch('http://localhost:5000/api/cart', {
+    fetch('/api/cart', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => {

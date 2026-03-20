@@ -67,7 +67,7 @@ module.exports = async function handler(req, res) {
         }
 
         return res.status(500).json({ 
-            error: "Server error during signup", 
+            error: "DB Error: " + err.message, 
             details: err.message 
         });
     }

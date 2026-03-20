@@ -37,10 +37,8 @@ app.post('/api/signup', async (req, res) => {
         const token = jwt.sign({ id: newUserId, email }, JWT_SECRET, { expiresIn: '24h' });
         res.json({ token, user: { id: newUserId, email } });
     } catch (err) {
-        if (err.code === '23505') { // Postgres unique violation error code
-            return res.status(400).json({ error: "Email already exists" });
-        }
-        res.status(500).json({ error: "Server error during signup" });
+        console.error("Signup error:", err);
+        res.status(500).json({ error: "DB Error: " + err.message });
     }
 });
 

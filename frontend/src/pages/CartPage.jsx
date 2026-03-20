@@ -102,11 +102,11 @@ export default function CartPage({ updateCartCount, token }) {
                                 <div className="cart-item-details">
                                     <h3 className="cart-item-title">{item.name}</h3>
                                     <div className="cart-item-price">
-                                        ${item.price.toFixed(2)} × {item.quantity}
+                                        ₹{item.price.toFixed(2)} × {item.quantity}
                                     </div>
                                 </div>
                                 <div className="cart-item-total" style={{ fontWeight: 600, fontSize: '1.25rem' }}>
-                                    ${(item.price * item.quantity).toFixed(2)}
+                                    ₹{(item.price * item.quantity).toFixed(2)}
                                 </div>
                                 <button
                                     className="btn btn-danger btn-icon-only"
@@ -122,13 +122,13 @@ export default function CartPage({ updateCartCount, token }) {
                     <div className="cart-summary">
                         <div>
                             <div style={{ color: 'var(--text-muted)' }}>Total Amount</div>
-                            <div className="cart-total">${total.toFixed(2)}</div>
+                            <div className="cart-total">₹{total.toFixed(2)}</div>
                         </div>
                         <button
                             className="btn btn-primary"
                             onClick={handleCheckout}
                             disabled={checkingOut}
-                            style={{ padding: '1rem 2rem', fontSize: '1.125rem' }}
+                            style={{ padding: '1rem 1rem', fontSize: '1.125rem' }}
                         >
                             <CreditCard size={20} />
                             {checkingOut ? 'Processing...' : 'Proceed to Checkout'}

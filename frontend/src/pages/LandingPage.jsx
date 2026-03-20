@@ -5,7 +5,7 @@ export default function LandingPage() {
     return (
         <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
             <h1 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem', background: 'var(--gradient-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                Welcome to VibeStore
+                Welcome to Vishnu's Store
             </h1>
             <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
                 Discover premium technology and lifestyle products. Join our community to start shopping.

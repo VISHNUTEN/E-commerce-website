@@ -25,8 +25,14 @@ export default function Login({ setToken }) {
                 throw new Error(data.error || 'Login failed');
             }
 
+            console.log("Login successful, setting token...");
             setToken(data.token);
-            navigate('/shop');
+
+            // Small delay to ensure state update propagates before navigation
+            setTimeout(() => {
+                console.log("Navigating to /shop...");
+                navigate('/shop');
+            }, 100);
         } catch (err) {
             setError(err.message);
         } finally {

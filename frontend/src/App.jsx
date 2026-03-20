@@ -36,7 +36,11 @@ function App() {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => {
-        if (!res.ok) throw new Error("Auth failed");
+        if (res.status === 401 || res.status === 403) {
+          setToken(''); // Definitive auth failure
+          throw new Error("Auth failed");
+        }
+        if (!res.ok) throw new Error("Fetch failed");
         return res.json();
       })
       .then(data => {
@@ -47,7 +51,6 @@ function App() {
       })
       .catch(err => {
         console.error("Error fetching cart", err);
-        setToken(''); // Auto logout on token expiration
       });
   };
 

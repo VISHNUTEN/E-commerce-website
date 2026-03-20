@@ -1,8 +1,10 @@
 import { ShoppingBag } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({ product, updateCartCount, showToast, token }) {
     const [isAdding, setIsAdding] = useState(false);
+    const navigate = useNavigate();
 
     const handleAddToCart = async () => {
         setIsAdding(true);
@@ -19,6 +21,7 @@ export default function ProductCard({ product, updateCartCount, showToast, token
             if (response.ok) {
                 updateCartCount();
                 showToast(`Added ${product.name} to cart`);
+                navigate('/cart');
             }
         } catch (err) {
             console.error("Error adding to cart", err);
@@ -35,7 +38,7 @@ export default function ProductCard({ product, updateCartCount, showToast, token
             <div className="product-info">
                 <h3 className="product-title">{product.name}</h3>
                 <p className="product-desc">{product.description}</p>
-                <div className="product-price">${product.price.toFixed(2)}</div>
+                <div className="product-price">₹{product.price.toFixed(2)}</div>
 
                 <button
                     className="btn btn-primary"
